@@ -1,0 +1,38 @@
+<header>
+  <h1>Agenda Clínica Dental</h1>
+</header>
+
+<main>
+  <section>
+    <h2>Agendar nuevo turno</h2>
+    <form (ngSubmit)="agregarTurno()">
+  <input type="text" [(ngModel)]="nombrePaciente" name="nombre" placeholder="Nombre del paciente" required />
+  <input type="datetime-local" [(ngModel)]="fechaTurno" name="fecha" required />
+  <button type="submit">Agregar turno</button>
+</form>
+  </section>
+
+  <section>
+    <h2>Turnos agendados</h2>
+    <div class="table-wrapper">
+      <table aria-label="Turnos agendados">
+  <thead>
+    <tr>
+      <th>Paciente</th>
+      <th>Fecha y hora</th>
+      <th>Asistió</th>
+      <th>Pagó</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let turno of turnos">
+      <td data-label="Paciente">{{ turno.nombre }}</td>
+      <td data-label="Fecha y hora">{{ turno.fecha }}</td>
+      <td data-label="Asistió"><input type="checkbox" aria-label="Paciente asistió" /></td>
+      <td data-label="Pagó"><input type="checkbox" aria-label="Paciente pagó" /></td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+  </section>
+</main>
